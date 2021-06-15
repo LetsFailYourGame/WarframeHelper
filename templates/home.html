@@ -1,0 +1,137 @@
+{% extends 'index.html' %}
+{% block mainContent %}
+<meta http-equiv="refresh" content="30">
+
+<!-- wrapper -->
+<div class="flex h-full">
+
+    <!-- ROW 1 -->
+    <div class="flex flex-col space-y-12 flex-1 mt-4">
+
+        <div class="w-72 max-w-lg mx-auto invisible sm:visible">
+            <h1 class="flex justify-center text-white font-bold text-lg">Earth Cycle Timer</h1>
+            <div class="border-b-2 border-pink-300 flex items-center justify-between shadow-lg mt-2 mx-4 px-4 rounded-md bg-gradient-to-r from-indigo-400 to-blue-400">
+                <div class="flex items-center py-1">
+                    {% if eIsDay %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-400 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                    </svg>
+                    {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-white h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    {% endif %}
+                </div>
+                <div class="bg-blue-800 rounded px-2">
+                    <div class="text-white font-bold text-xs">{{ eTime }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="w-72 max-w-lg mx-auto invisible sm:visible">
+            <h1 class="flex justify-center text-white font-bold text-lg">Cambion Cycle Timer</h1>
+            <div class="border-b-2 border-pink-300 flex items-center justify-between shadow-lg mt-2 mx-4 px-4 rounded-md bg-gradient-to-r from-indigo-400 to-blue-400">
+                <div class="flex items-center py-1">
+                    <h1 class="text-white font-bold text-sm">{{ cambActive }}</h1>
+                </div>
+                <div class="bg-blue-800 rounded px-2">
+                    <div class="text-white font-bold text-xs">{{ cambTime }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="flex flex-col flex-1 space-y-12 mt-4">
+        <!-- cetus -->
+        <div class="w-72 max-w-lg mx-auto invisible sm:visible">
+            <h1 class="flex justify-center text-white font-bold text-lg">Cetus Cycle Timer</h1>
+            <div class="border-b-2 border-pink-300 flex items-center justify-between shadow-lg mt-2 mx-4 px-4 rounded-md bg-gradient-to-r from-indigo-400 to-blue-400">
+                <div class="flex items-center py-1">
+                    {% if cIsDay %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-400 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                    </svg>
+                    {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-white h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    {% endif %}
+                </div>
+                <div class="bg-blue-800 rounded px-2">
+                    <div class="text-white font-bold text-xs">{{ cTime }}</div>
+                </div>
+            </div>
+        </div>
+        <!-- sortie -->
+        <div class="w-96 mx-auto max-w-lg invisible sm:visible">
+            <h1 class="flex justify-center text-white font-bold text-lg">Sortie</h1>
+            <div class="border-b-2 border-pink-300 shadow-lg mt-2 mx-2 rounded-md bg-gradient-to-r from-indigo-400 to-blue-400">
+                <div class="flex items-center justify-between px-4">
+                    <div class="border-b-2 mt-1">
+                        <h1 class="text-white font-bold">{{ boss }}</h1>
+                    </div>
+                    <div class="bg-blue-800 rounded px-1 mt-1">
+                        <div class="text-white font-bold text-xs">{{ sortieRemaining }}</div>
+                    </div>
+                </div>
+                {% for mission in missions %}
+                <div class="my-2 pl-4">
+                    <h1 class="text-sm text-white font-bold">{{mission['missionType']}} - {{ mission['node']}} </h1>
+                    <h2 class="text-xs text-white">{{mission['modifier']}}</h2>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- ROW 3 -->
+    <div class="flex flex-col flex-1 space-y-12 mt-4">
+        <div class="w-72 mx-auto max-w-lg mx-auto invisible lg:visible">
+            <h1 class="flex justify-center text-white font-bold text-lg">Vallis Cycle Timer</h1>
+            <div class="border-b-2 border-pink-300 flex items-center justify-between shadow-lg mt-2 mx-4 px-4 rounded-md bg-gradient-to-r from-indigo-400 to-blue-400">
+                <div class="flex items-center py-1">
+                    {% if vIsHot %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-red-300 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path>
+                    </svg>
+                    {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 366.522 423.219">
+                        <path id="SnowFlake04" d="M364,318.068l35.257,3.734L378.4,293.139l-24.619-2.612-3.327-1.919,18.34-4.913a4.344,4.344,0,0,0-2.251-8.392l-26.729,7.161-32.957-19.027,7.225-1.937,23.961,13.837a4.342,4.342,0,1,0,4.344-7.52l-16.444-9.49,3.717-.994,24.455,3.85,27.57-22.288-35.023-5.52-19.25,15.565-3.714.994,9.493-16.444a4.343,4.343,0,0,0-7.523-4.341L311.83,253.113,296.219,257.3l-64.008-36.951,32.818-.006,19.565,19.565a4.343,4.343,0,0,0,6.145-6.139L277.318,220.34h3.838l22.625,10.052L336.185,216l-32.4-14.394-22.625,10.051h-3.838l13.421-13.425a4.344,4.344,0,0,0-6.145-6.141l-19.565,19.566H232.21L296.218,174.7l15.611,4.184,13.834,23.962a4.343,4.343,0,0,0,7.523-4.343l-9.493-16.439,3.714.994,19.25,15.564,35.023-5.517-27.57-22.289-24.455,3.851-3.717-.994,16.444-9.494a4.343,4.343,0,1,0-4.344-7.521l-23.961,13.834-7.225-1.935,32.957-19.027,26.729,7.161a4.342,4.342,0,0,0,2.251-8.388l-18.343-4.916,3.33-1.92,24.619-2.608,20.865-28.666L364,113.928l-14.571,20.016-3.329,1.922,4.912-18.338a4.341,4.341,0,1,0-8.386-2.245l-7.161,26.725-32.957,19.029,1.937-7.222,23.963-13.833a4.344,4.344,0,1,0-4.346-7.524l-16.438,9.492.994-3.709,15.565-19.253-5.52-35.025-22.291,27.573,3.853,24.457-.994,3.711-9.49-16.441a4.344,4.344,0,1,0-7.523,4.344l13.834,23.961-4.185,15.611-64,36.954,16.41-28.421L271,168.55a4.342,4.342,0,0,0-2.248-8.389l-18.34,4.911,1.922-3.323,20.019-14.571,3.734-35.257-28.666,20.864-2.609,24.621-1.919,3.325-4.913-18.338a4.344,4.344,0,0,0-8.392,2.25l7.161,26.728L220.341,199.8V125.885l11.434-11.43h27.671a4.343,4.343,0,0,0,0-8.685H240.459l2.717-2.715,23.1-8.891,12.736-33.091L245.926,73.807l-8.9,23.107-2.717,2.715V80.64a4.342,4.342,0,0,0-8.685,0v27.671L220.34,113.6V75.542l19.568-19.563a4.343,4.343,0,0,0-6.142-6.141L220.34,63.26V59.419l10.055-22.627L216,4.39l-14.4,32.4,10.051,22.624V63.26L198.232,49.838a4.342,4.342,0,0,0-6.141,6.141l19.563,19.563V113.6l-5.284-5.287V80.64a4.342,4.342,0,1,0-8.684,0V99.626l-2.718-2.715L186.075,73.8,152.986,61.07l12.733,33.091,23.107,8.891,2.715,2.715H172.556a4.343,4.343,0,0,0,0,8.685h27.668l11.428,11.43v73.906l-16.408-28.42,7.162-26.728a4.343,4.343,0,0,0-8.389-2.25L189.1,160.728l-1.922-3.327-2.608-24.62L155.91,111.92l3.735,35.257,20.016,14.571,1.922,3.323-18.338-4.911A4.342,4.342,0,1,0,161,168.549l26.727,7.162,16.412,28.426-64.011-36.956-4.184-15.614,13.837-23.962a4.343,4.343,0,1,0-7.523-4.342L132.764,139.7l-.994-3.711,3.854-24.457L113.332,83.963l-5.517,35.025,15.564,19.253.994,3.709-16.439-9.492a4.344,4.344,0,1,0-4.343,7.524l23.96,13.833,1.937,7.222L96.531,142.011l-7.162-26.728a4.343,4.343,0,0,0-8.39,2.248l4.915,18.335-3.329-1.919L68,113.93,32.739,110.2,53.6,138.863l24.62,2.608,3.326,1.919-18.338,4.916a4.342,4.342,0,1,0,2.25,8.388l26.728-7.161,32.957,19.027-7.223,1.938L93.959,156.661a4.343,4.343,0,0,0-4.343,7.523l16.441,9.492-3.708.994-24.458-3.851L50.32,193.107l35.023,5.517L104.6,183.06l3.71-.994L98.813,198.5a4.343,4.343,0,1,0,7.523,4.342l13.834-23.962,15.612-4.182,64.008,36.951H166.97L147.4,192.091a4.342,4.342,0,0,0-6.141,6.141l13.424,13.422h-3.842L128.22,201.606,95.819,216l32.4,14.392,22.625-10.046h3.844l-13.425,13.421a4.342,4.342,0,1,0,6.141,6.139l19.566-19.56,32.82-.006L135.786,257.3l-15.615-4.185-13.834-23.964a4.343,4.343,0,0,0-7.523,4.341l9.492,16.444-3.71-.994L85.344,233.374l-35.023,5.52,27.572,22.288,24.455-3.85,3.712.994-16.442,9.49a4.342,4.342,0,1,0,4.343,7.52L117.926,261.5l7.222,1.942L92.189,282.47,65.461,275.3a4.344,4.344,0,0,0-2.25,8.392l18.338,4.913-3.326,1.925L53.6,293.139,32.739,321.8,68,318.068l14.568-20.016,3.329-1.919-4.915,18.34a4.342,4.342,0,1,0,8.39,2.242l7.162-26.727,32.957-19.027-1.937,7.225-23.96,13.832a4.344,4.344,0,1,0,4.342,7.526l16.439-9.5-.994,3.711-15.564,19.253,5.517,35.026,22.292-27.57-3.854-24.46.994-3.711,9.492,16.443a4.343,4.343,0,0,0,7.523-4.341l-13.837-23.963,4.184-15.612,64.011-36.956-16.412,28.42L161,263.454a4.341,4.341,0,1,0,2.247,8.386l18.338-4.913-1.922,3.323-20.016,14.571-3.735,35.264,28.666-20.866,2.608-24.622,1.922-3.329,4.913,18.34a4.343,4.343,0,0,0,8.389-2.249l-7.162-26.727,16.411-28.426v73.908l-11.431,11.433H172.557a4.344,4.344,0,0,0,0,8.688h18.985l-2.715,2.711-23.107,8.9-12.733,33.09L186.075,358.2l8.893-23.107,2.718-2.717v18.987a4.342,4.342,0,0,0,8.684,0V323.693l5.287-5.3V356.46l-19.566,19.564a4.344,4.344,0,0,0,6.141,6.145l13.425-13.427v3.844L201.6,395.208l14.4,32.4,14.4-32.4-10.052-22.622v-3.844l13.424,13.427a4.344,4.344,0,0,0,6.142-6.145l-19.565-19.564V318.4l5.286,5.3v27.669a4.342,4.342,0,0,0,8.685,0V332.374l2.717,2.717,8.9,23.107,33.091,12.733-12.736-33.09-23.1-8.9-2.717-2.711h18.987a4.344,4.344,0,0,0,0-8.688H231.776l-11.431-11.433V232.205l16.409,28.426-7.161,26.727a4.344,4.344,0,0,0,8.392,2.249l4.913-18.334,1.919,3.323,2.609,24.622,28.666,20.866-3.734-35.264-20.019-14.571-1.922-3.323,18.34,4.913A4.341,4.341,0,1,0,271,263.453l-26.726-7.167-16.41-28.42,64,36.951,4.185,15.617L282.222,304.4a4.343,4.343,0,0,0,7.523,4.341l9.49-16.443.994,3.711-3.853,24.46,22.291,27.57,5.52-35.026-15.565-19.253-.994-3.711,16.438,9.5a4.345,4.345,0,0,0,4.346-7.526l-23.963-13.832-1.937-7.225,32.957,19.027,7.161,26.727a4.342,4.342,0,0,0,8.389-2.243l-4.91-18.34,3.324,1.919Z" transform="translate(-32.739 -4.39)" fill="#fff"></path>
+                      </svg>                      
+                    {% endif %}
+                </div>
+                <div class="bg-blue-800 rounded px-2">
+                    <div class="text-white font-bold text-xs">{{ vTime }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-92 mx-auto max-w-lg invisible lg:visible">
+            <h1 class="flex justify-center text-white font-bold text-lg">Event</h1>
+            <div class="border-b-2 border-pink-300 shadow-lg mt-2 mx-2 rounded-md bg-gradient-to-r from-indigo-400 to-blue-400">
+                {% for i in event %}
+                <div class="flex flex-col my-4 mt-2 pt-2 items-center mx-2">
+                    <h1 class="text-white font-bold">{{ i[1] }}</h1>
+                    <h2 class="text-white text-xs">{{ i[2] }}</h2>
+                    <div class="flex items-center my-1">
+                        <h6 class="text-xs bg-purple-800 rounded shadow text-white px-2">{{ i[0] }}</h6>
+                    </div>
+                    <h2 class="text-white text-xs">Event Rewards:</h2>
+                    {% for card in i[3] %}
+                    <div class="flex items-center space-x-3 mt-1">
+                        <h6 class="text-xs bg-purple-600 rounded shadow text-white px-2">{{ card }}</h6>
+                    </div>
+                    {% endfor %}
+                    {% for card in i[4] %}
+                    <div class="flex items-center space-x-3 mt-2">
+                        <h6 class="text-xs bg-purple-600 rounded shadow text-white px-2">{{ card }}</h6>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+</div>
+
+
+{% endblock %}

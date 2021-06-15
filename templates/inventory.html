@@ -1,0 +1,90 @@
+{% extends "index.html" %}
+{% block mainContent %}
+        <div class="flex items-center justify-between">
+            <!-- Search Input-->
+            <div class="flex items-center mt-4 ml-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute ml-2 h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                    </svg>
+                <form action="/inventory" method="post">
+                    <input class="focus:outline-none focus:bg-blue-900 shadow pl-9 pr-3 py-1 bg-indigo-600 rounded-full w-64 text-white items-center flex" placeholder="Search" type="text" name="search">
+                </form>
+                <!-- serch mode -->
+                <div class="flex items-center">
+                    <a href="/inventory/sort/alphabetical">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white ml-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h7a1 1 0 100-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM15 8a1 1 0 10-2 0v5.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L15 13.586V8z" />
+                        </svg>
+                    </a>
+                </div>
+                <!-- serch mode -->
+                <div class="flex items-center">
+                    <a href="/inventory/sort/stonks">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white mx-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <!-- Add Svg-->
+            <div class="flex invisible sm:visible">
+                <!-- Add Item Input -->
+                <div class="flex items-center mt-4 ml-4 mr-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute ml-2 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    <form action="/inventory" method="post">  
+                        <input class="focus:outline-none focus:bg-blue-900 shadow pl-9 pr-3 py-1 bg-indigo-600 rounded-full w-64 text-white items-center flex" placeholder="Add Item" type="text" name="add">
+                    </form>
+                </div>
+                </div>
+            </div>
+            <!-- Inventory Item Cards -->
+            <div class="flex flex-wrap pl-32 ml-4 relative select-none mt-2">
+                {% for item in items %}
+                <div class="group w-64 rounded mr-8 rounded-2xl">
+                    <a href="/inventory/{{ item.name }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="hover:border-blue-300 mt-56 ml-28 border-2 p-1 rounded-full transition ease-in duration-300 z-20 text-white group-hover:opacity-100 absolute opacity-0 h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                        </svg>
+                    </a>
+                                                
+                    <!-- Amount & Price -->
+                    <div class="flex absolute items-center ml-5 space-x-44 mt-6">
+                        <!-- Amount -->
+                        <div class="text-white font-bold text-sm">{{ item.quantity }}x</div>
+                        <!-- Price -->
+                        <div class="text-green-400 font-bold text-sm flex">
+                            <h1>{{ item.wtsMaxPrice }}</h1>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- Main Card -->
+                    <div class="shadow-md h-64 bg-gradient-to-r rounded-2xl from-blue-500 to-blue-600 flex flex-col justify-center items-center mt-4">              
+                            <!-- Main Picture-->
+                            {% if 'set' in item.name  or 'blueprint' in item.name %}
+                                <img class="transform hover:scale-105 transition ease-in duration-300 h-36 mx-auto flex-none" src="https://warframe.market/static/assets/{{ item.icon }}" alt="">
+                            {% else %}
+                                <img class="transform hover:scale-125 transition ease-in duration-300 h-28 mb-4 mx-auto" src="https://warframe.market/static/assets/{{ item.icon }}" alt="">
+                            {% endif %}
+
+                            <!-- Sub Items Picture -->
+                            <h1 class="text-white font-bold text-lg"><a href="/inventory/{{ item.name }}">{{ item.name.replace('_', ' ').upper() }}</a></h1>
+                            <div class="mt-1 flex space-x-5 py-2 border-t">
+                                {% for sitem in item.sub_items %}
+                                    {% if 'blueprint' in sitem.name %}
+                                        <img class="max-h-12 mx-auto p-1 rounded-full" src="https://warframe.market/static/assets/sub_icons/blueprint_128x128.png" alt="">
+                                    {% else %}
+                                        <img class="max-h-12 mx-auto p-1 rounded-xl" src="https://warframe.market/static/assets/{{ sitem.icon }}" alt="">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+{% endblock %}

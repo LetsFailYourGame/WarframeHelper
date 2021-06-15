@@ -1,0 +1,104 @@
+{% extends "index.html" %}
+{% block mainContent %}
+
+<div class="flex flex-col h-full">
+
+    <!-- top bar -->
+    <div class="h-10 flex items-center space-x-3 mt-3 ml-4">
+        <!-- ducats -->
+        <div class="flex bg-blue-700 rounded-full shadow px-2 py-1 select-none">
+
+            <div class="flex pr-3 border-r-2 items-center mr-4">
+                <h1 class="font-bold text-white text-lg">{{ducats}}</h1>
+                <img class="select-none w-8 h-8" src="https://warframe.market/static/build/resources/images/icons/Ducats.67a4b4c615df1dff8bd5b091daea79ec.png" alt="">
+            </div>
+            <!-- platinum -->
+            <div class="flex items-center">
+                <h1 class="font-bold text-white text-lg mr-1">{{platin}}</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- main content -->
+    <div class="flex overflow-hidden mt-2 select-none">
+        <!-- wrapper  -->
+        <div class="flex-1 flex flex-wrap">
+            <!-- cards -->
+            {% for item in BaroItems %}
+            <div class="group shadow-lg flex items-center justify-center bg-gradient-to-r from-indigo-400 to-blue-400 w-72 h-16 rounded-3xl mt-3 ml-3 border-2 {% if item.rarity == 'Rare' %}border-yellow-300 {% elif item.rarity == 'Common' %}border-gray-300 {% else %}border-yellow-900 {% endif %}">
+                <a href="/baro/sell/{{ item.name }}" class="absolute z-10 group-hover:opacity-100 opacity-0 visible">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </a>
+                <div class="group flex items-center group-hover:opacity-30">
+                    {% if "blueprint" in item.name %}
+                        <img class="ml-1 mt-1 max-w-md max-h-14 w-14 rounded-3xl rounded-3xl mr-1" src="https://warframe.market/static/assets/sub_icons/blueprint_128x128.png" alt="">
+                    {% elif "barrel" in item.name %}
+                        <img class="mt-1 max-w-md max-h-14 w-12 rounded-3xl rounded-3xl mr-2" src="https://warframe.market/static/assets/{{ item.icon }}" alt="">
+                    {% else %}
+                        <img class="mt-1 max-w-md max-h-14 rounded-3xl rounded-3xl mr-2" src="https://warframe.market/static/assets/{{ item.icon }}" alt="">
+                    {% endif %}
+                    <div class="w-56">
+                        <h1 class="text-white font-bold truncate">{{item.name.replace("_", " ").upper()}}</h1> 
+                        <div class="flex items-center">
+                            <h1 class="text-white text-sm">{{ item.ducats }}</h1>
+                            <img class="ml-1 select-none w-5 h-5r" src="https://warframe.market/static/build/resources/images/icons/Ducats.67a4b4c615df1dff8bd5b091daea79ec.png" alt="">
+                            
+                            <h1 class="text-white text-sm  ml-2 pl-2 border-l-2 ">{{ item.wtsMaxPrice }}</h1>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+
+                            <h1 class="text-white text-sm  ml-2 pl-2 border-l-2 ">{{ item.quantity }}x</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Right List -->
+        <div class="lg:visible lg:w-96 w-0 invisible bg-blue-400 shadow-lg mr-4 overflow-auto rounded-xl">
+            <!-- BARO -->
+            {% for item in BaroList %}
+            <div class="flex items-center space-x-2 mt-2">
+                <a href="/baro/delete/{{ item.name }}" class="ml-2" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.384" height="12.384" viewBox="0 0 12.384 12.384">
+                        <path id="Pfad_4" data-name="Pfad 4" d="M4.3,4.3a1.032,1.032,0,0,1,1.459,0l4.43,4.43,4.43-4.43a1.032,1.032,0,1,1,1.459,1.459l-4.43,4.43,4.43,4.43a1.032,1.032,0,1,1-1.459,1.459l-4.43-4.43-4.43,4.43A1.032,1.032,0,1,1,4.3,14.622l4.43-4.43L4.3,5.762A1.032,1.032,0,0,1,4.3,4.3Z" transform="translate(-4 -4)" fill="#ff0303" fill-rule="evenodd"/>
+                    </svg>                  
+                </a>
+                <div class="flex items-center justify-between w-full pr-5">
+                    <h1 class="text-white font-bold">{{ item.name.replace("_", " ").upper() }}</h1>
+                    <div class="flex space-x-2 items-center">
+                        <h1 class="text-white font-bold">{{ item.quantity }}x{{ item.ducats }}</h1>
+                        <img class="select-none w-5 h-5" src="https://warframe.market/static/build/resources/images/icons/Ducats.67a4b4c615df1dff8bd5b091daea79ec.png" alt="">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+<style>
+    /* Works on Firefox */
+    *::-webkit-scrollbar-track {
+    background: #2d66c2;
+    }
+    /* Works on Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+    width: 12px;
+    }
+
+    *::-webkit-scrollbar-thumb {
+    background-color: #545DFF;
+    border-radius: 20px;
+    }
+</style>
+
+{% endblock %}

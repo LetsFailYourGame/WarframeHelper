@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Home</title>
+</head>
+
+<body class="bg-gradient-to-r from-indigo-500 to-blue-500 font-mono">
+    <!-- Wrapper -->
+
+    <div class="flex flex-col h-screen">
+        <!-- Navbar -->
+        <div class="flex items-center p-3 text-white justify-between shadow-md">
+            <!-- Logo -->
+            <a href="/" class="flex items-center space-x-2">
+                <!-- ICON -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-none h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M13 7H7v6h6V7z"></path>
+                    <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clip-rule="evenodd"></path>
+                </svg>
+                <!-- Program Name -->
+                <h1 class="text-white font-bold text-xl select-none">WarHelper</h1>
+            </a>
+            
+            <!-- Baro Time-->
+            <div class="countdown md:visible lg:ml-28 ml-1 invisible bg-blue-700 px-2  rounded text-gray-300 select-none"></div>
+
+            <!-- Nav Items -->
+            <div class="flex items-center space-x-8 mr-16 sm:visible invisible">
+                <a href="/inventory">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 40 40">
+                        <path id="Pfad_1" data-name="Pfad 1" d="M8.714,3A5.714,5.714,0,0,0,3,8.714V37.286A5.714,5.714,0,0,0,8.714,43H37.286A5.714,5.714,0,0,0,43,37.286V8.714A5.714,5.714,0,0,0,37.286,3Zm0,5.714H37.286v20H31.571l-2.857,5.714H17.286l-2.857-5.714H8.714Z" transform="translate(-3 -3)" fill="#fff" fill-rule="evenodd"></path>
+                    </svg>                  
+                </a>
+                <a href="/buying">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 40 40">
+                        <path id="Pfad_4" data-name="Pfad 4" d="M2,25.857A2.7,2.7,0,0,1,4.5,23h5A2.7,2.7,0,0,1,12,25.857V40.143A2.7,2.7,0,0,1,9.5,43h-5A2.7,2.7,0,0,1,2,40.143ZM17,14.429a2.7,2.7,0,0,1,2.5-2.857h5A2.7,2.7,0,0,1,27,14.429V40.143A2.7,2.7,0,0,1,24.5,43h-5A2.7,2.7,0,0,1,17,40.143ZM32,5.857A2.7,2.7,0,0,1,34.5,3h5A2.7,2.7,0,0,1,42,5.857V40.143A2.7,2.7,0,0,1,39.5,43h-5A2.7,2.7,0,0,1,32,40.143Z" transform="translate(-2 -3)" fill="#fff"></path>
+                    </svg>                  
+                </a>
+                <a href="/baro" class="relative">
+                    <div class="baroPing">
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1zm-5 8.274l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L5 10.274zm10 0l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L15 10.274z" clip-rule="evenodd" />
+                    </svg>                 
+                </a>
+            </div> 
+        </div>
+
+        <!-- Main Content-->
+        <div class="flex-auto">
+            {% block mainContent %} {% endblock %}
+        </div>
+
+
+        <script src="/static/moment-min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>
+            function timeDiffCalc(dateFuture, dateNow) {
+                let diffInMilliSeconds = Math.abs(dateFuture - dateNow) / 1000;
+
+                // calculate days
+                const days = Math.floor(diffInMilliSeconds / 86400);
+                diffInMilliSeconds -= days * 86400;
+
+                // calculate hours
+                const hours = Math.floor(diffInMilliSeconds / 3600) % 24;
+                diffInMilliSeconds -= hours * 3600;
+
+
+                let difference = '';
+                if (days > 0) {
+                difference += (days === 1) ? `${days} day and ` : `${days} days and `;
+                }
+
+                difference += (hours === 0 || hours === 1) ? `${hours} hour ` : `${hours} hours `;
+
+                return difference;
+            }
+
+            let weekNumber = moment().isoWeek();
+            let now = new Date();
+            const tomorrow = new Date()
+            tomorrow.setDate(tomorrow.getDate() + 1)
+            tomorrow.setHours(15,0,0,0)
+
+            // ** TESTING **
+            //let weekNumber = 1
+            //let now = new Date('MAY 26, 2021');
+            //now.setHours(15, 10, 22)
+            if (weekNumber % 2 === 0) {
+                $('.baroPing').addClass("animate-ping w-7 h-7 absolute bg-blue-400 rounded-full")
+
+                if (now.getDay() == 5 && now.getHours() >= 15) {
+                    $('.countdown').text("Baro: Leaves in 2 Days");
+                }
+                else if (now.getDay() == 6)
+                {
+                    $('.countdown').text("Baro: "+ timeDiffCalc(tomorrow, now) + " remaining");
+                }
+                else if (now.getDay() == 0)
+                {
+                    if (now.getHours() < 18) {
+                        $('.countdown').text("Baro: Leaving at 18pm");
+                    }
+                    else {
+                        $('.countdown').text("Baro: Left today at 18pm | Waiting for new Week..");
+                        $('.baroPing').removeClass("animate-ping w-7 h-7 absolute bg-blue-400 rounded-full")
+                    }
+                }
+                else if (now.getDay() == 4)
+                {
+                    $('.countdown').text("Baro: in " + timeDiffCalc(tomorrow, now));
+                }
+                else{
+                    $('.countdown').text("Baro: This Friday");
+                }
+            }
+            else {
+                nextBaro = moment().day(12)
+                $('.countdown').text("Baro in: " + nextBaro.diff(now, "days") + " Days");
+            }
+        </script>
+    </div>
+</body>
+</html>
